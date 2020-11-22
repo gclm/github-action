@@ -1,5 +1,5 @@
 # github-action
-> github-action 脚本合集
+> git remote add origin https://github.com/gclm/github-action.git
 
 ## 功能介绍
 - 天翼云盘自动签到 + 抽奖
