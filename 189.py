@@ -34,22 +34,16 @@ def main():
         "Host" : "m.cloud.189.cn",
         "Accept-Encoding" : "gzip, deflate",
     }
-    response = s.get(url,headers=headers)
-    if ("errorCode" in response.text):
-        print(response.text)
-    else:
-        response_body = reponse.json()
-        if "description" not in response_body:
-            print("今天已经签过到了")
-        else:
-            description = response_body['description']
+    for i in range(0,2):
+        print("今天进行第 {} 次抽奖".format(i))
+        response = s.get(url,headers=headers)
+        if ("errorCode" in response.text):
+            print(response.text)
+        elif "description" in response.text:
+            description = response.json()['description']
             print(f"抽奖获得{description}")
-    response = s.get(url2,headers=headers)
-    if ("errorCode" in response.text):
-        print(response.text)
-    else:
-        description = response.json()['description']
-        print(f"抽奖获得{description}")
+        else:
+            print("今天已经抽过奖了")
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
