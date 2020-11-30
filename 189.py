@@ -38,8 +38,12 @@ def main():
     if ("errorCode" in response.text):
         print(response.text)
     else:
-        description = response.json()['description']
-        print(f"抽奖获得{description}")
+        response_body = reponse.json()
+        if "description" not in response_body:
+            print("今天已经签过到了")
+        else:
+            description = response_body['description']
+            print(f"抽奖获得{description}")
     response = s.get(url2,headers=headers)
     if ("errorCode" in response.text):
         print(response.text)
